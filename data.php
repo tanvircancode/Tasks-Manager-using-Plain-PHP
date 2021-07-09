@@ -17,12 +17,12 @@ if (!$connection) {
     }
     // $data = mysqli_fetch_assoc($res);
     // print_r($data);
-    exit;
-    $res = mysqli_query($connection, $query);
-    if ($res) {
-        echo "done";
-    } else {
-        echo "no";
-    }
+    // exit;
+    // $res = mysqli_query($connection, $query);
+    // if ($res) {
+    //     echo "done";
+    // } else {
+    //     echo "no";
+    // }
     mysqli_close($connection);
 }
