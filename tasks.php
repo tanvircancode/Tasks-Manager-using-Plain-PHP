@@ -29,7 +29,36 @@ else{
         }
 
     }
+    else if($action == 'delete'){
+        $id = $_POST['taskid'];
+        if($id)
+        {
+            $query = "delete from tasks where id = '$id' limit 1";
+            $res = mysqli_query($connection, $query);
+        }
+        header('location:index.php');
+    }
+    else if($action == 'incomplete'){
+        $id = $_POST['taskid'];
+        if($id)
+        {
+            $query = "update tasks set complete = 0 where id = '$id' limit 1";
+            $res = mysqli_query($connection, $query);
+        }
+        header('location:index.php');
+    }
+    else if($action == 'complete'){
+        $id = $_POST['taskid'];
+        if($id)
+        {
+            $query = "update tasks set complete = 1 where id = '$id' limit 1";
+            $res = mysqli_query($connection, $query);
+        }
+        header('location:index.php');
+    }
 } }
+
+mysqli_close($connection);
 
 ?>
 

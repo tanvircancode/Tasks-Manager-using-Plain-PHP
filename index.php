@@ -112,7 +112,7 @@ $resCompleteTasks = mysqli_query($connection, $completeTasksQuery);
                ?>
 
                     <tr>
-                        <td><input name="taskids[]" class="label-inline" type="checkbox" value=""></td>
+                        <td><input name="taskids[]" class="label-inline" type="checkbox" value="<?php echo $cdata['id']; ?>"></td>
                         <td><?php echo $cdata['id']; ?></td>
                         <td><?php echo $cdata['task']; ?></td>
                         <td><?php echo $date ; ?></td>
@@ -178,10 +178,24 @@ $resCompleteTasks = mysqli_query($connection, $completeTasksQuery);
 <script>
 
     $(".delete").click(function(){
+        if(confirm("Are you Sure to delete?")){
         var id = $(this).data("taskid");
-        alert(id);
+        $("#dtaskid").val(id);
+        $("#deleteform").submit();
+        }
+    });
 
-    })
+    $(".incomplete").click(function(){
+        var id = $(this).data("taskid");
+        $("#itaskid").val(id);
+        $("#incompleteform").submit();
+    });
+
+    $(".complete").click(function(){
+        var id = $(this).data("taskid");
+        $("#taskid").val(id);
+        $("#completeform").submit();
+    });
 
 </script>
 </html>
