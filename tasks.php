@@ -56,6 +56,24 @@ else{
         }
         header('location:index.php');
     }
+    else if($action == 'bulkcomplete'){
+        $_taskids = implode(',' , $_POST['taskids']);
+        if($_taskids)
+        {
+            $query = "update tasks set complete = 1 where id in ($_taskids) ";
+            $res = mysqli_query($connection, $query);
+        }
+        header('location:index.php');
+    }
+    else if($action == 'bulkdelete'){
+        $_taskids = implode(',' , $_POST['taskids']);
+        if($_taskids)
+        {
+            $query = "delete from tasks where id in ($_taskids) ";
+            $res = mysqli_query($connection, $query);
+        }
+        header('location:index.php');
+    }
 } }
 
 mysqli_close($connection);
