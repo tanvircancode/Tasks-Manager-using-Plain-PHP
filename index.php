@@ -124,7 +124,7 @@ $resCompleteTasks = mysqli_query($connection, $completeTasksQuery);
 
                 </tbody>
             </table>
-            <select id="action" name="action" >
+            <select name="action" onchange="selectedVal(value);" >
                 <option value="0">With Selected</option>
                 <option value="bulkdelete">Delete</option>
                 <option value="bulkcomplete">Mark As Complete</option>
@@ -148,9 +148,9 @@ $resCompleteTasks = mysqli_query($connection, $completeTasksQuery);
          } ?>
 
             <label for="task">Task</label>
-            <input type="text" placeholder="Task Details" id="task" name="task">
+            <input type="text" placeholder="Task Details" id="task" name="task" required>
             <label for="date">Date</label>
-            <input type="text" placeholder="Task Date" id="date" name="date">
+            <input type="text" placeholder="y-m-d" id="date" name="date" required>
 
             <input class="button-primary" type="submit" value="Add Task">
             <input type="hidden" name="action" value="add">
@@ -196,6 +196,18 @@ $resCompleteTasks = mysqli_query($connection, $completeTasksQuery);
         $("#taskid").val(id);
         $("#completeform").submit();
     });
+
+    // custom by me
+    function selectedVal(value) {
+         if(value == "bulkdelete")
+         {
+            $("#bulksubmit").click(function(){
+            if(!confirm("Are you Sure to Delete?")){
+                return false;
+            }
+            })
+         }
+   }
 
 </script>
 </html>
